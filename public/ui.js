@@ -87,7 +87,7 @@ sendPosition = function(data) {
 	    data: coords,
 	    success: function(data) {
 	      console.log(data)
-	      sightingMap.load_data(json)
+	      sightingMap.load_data(data)
 	    }
 	  })  
 }
