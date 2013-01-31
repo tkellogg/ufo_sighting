@@ -65,9 +65,9 @@ var load = function(position) {
 			mapOptions);
 	var sightingMap = new SightingMap(map);
 
-	var url = 'http://timkellogg.me/ufo_sighting/sightings.json';
-	//$.getJSON(url, null, function(data) { sightingMap.load_data.apply(sightinMap, data); });
-	sightingMap.load_data(json);
+	var url = 'http://velojournal.com:3000/sightings.json?latitude='+lat+'&longitude='+lon;
+	$.getJSON(url, null, function(data) { sightingMap.load_data.apply(sightingMap, data); });
+	//sightingMap.load_data(json);
 }
 
 $(function() {
