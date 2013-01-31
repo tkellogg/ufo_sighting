@@ -63,7 +63,7 @@ var load = function(position) {
 
 	var map = new google.maps.Map(document.getElementById("map_canvas"),
 			mapOptions);
-	var sightingMap = new SightingMap(map);
+	sightingMap = new SightingMap(map);
 
 	var url = 'http://timkellogg.me/ufo_sighting/sightings.json';
 	//$.getJSON(url, null, function(data) { sightingMap.load_data.apply(sightinMap, data); });
@@ -78,6 +78,7 @@ var load = function(position) {
 		sendPosition(data)
 	})	
 }
+
 
 sendPosition = function(data) {
 	 var coords = 'latitude='+data.lat+'&longitude='+data.lng
