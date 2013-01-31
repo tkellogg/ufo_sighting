@@ -37,17 +37,17 @@ function SightingMap(map) {
 };
 
 SightingMap.prototype.load_data = function (data) {
-		for (var i in data) {
-			var sighting = data[i];
-			var myLatlng = new google.maps.LatLng(sighting.coord_lat, sighting.coord_lon);
-			console.log (sighting);
-			var marker = new google.maps.Marker({
-					position: myLatlng,
-					map: this.map,
-					title: sighting.summary,
-					icon: 'https://dl.dropbox.com/u/1031392/ufo_marker.png'
-			});
-		}
+	for (var i in data) {
+		var sighting = data[i];
+		var myLatlng = new google.maps.LatLng(sighting.coord_lat, sighting.coord_lon);
+		console.log (sighting);
+		var marker = new google.maps.Marker({
+				position: myLatlng,
+				map: this.map,
+				title: sighting.summary,
+				icon: 'https://dl.dropbox.com/u/1031392/ufo_marker.png'
+		});
+	}
 };
 
 var load = function(position) {
@@ -72,6 +72,6 @@ var load = function(position) {
 
 $(function() {
 	if (!navigator.geolocation.getCurrentPosition(load)) {
-		alert("geolocation isn't working");
+		load({coords:{latitude:38.997934, longitude:-105.550567}});
 	}
 });
