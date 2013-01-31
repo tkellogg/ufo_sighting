@@ -39,7 +39,7 @@ function SightingMap(map) {
 SightingMap.prototype.load_data = function (data) {
 	for (var i in data) {
 		var sighting = data[i];
-		var myLatlng = new google.maps.LatLng(sighting.coord_lat, sighting.coord_lon);
+		var myLatlng = new google.maps.LatLng(sighting.latitude, sighting.longitude);
 		console.log (sighting);
 		var marker = new google.maps.Marker({
 				position: myLatlng,
@@ -67,11 +67,33 @@ var load = function(position) {
 
 	var url = 'http://timkellogg.me/ufo_sighting/sightings.json';
 	//$.getJSON(url, null, function(data) { sightingMap.load_data.apply(sightinMap, data); });
-	sightingMap.load_data(json);
+	// sightingMap.load_data(json);
+
+	google.maps.event.addListener(map, 'center_changed', function(latLng) {
+		coords = map.getCenter()
+		var data = {
+			'lat' : coords.lat(),
+			'lng' : coords.lng()
+		}
+		sendPosition(data)
+	})	
+}
+
+sendPosition = function(data) {
+	 var coords = 'latitude='+data.lat+'&longitude='+data.lng
+	 $.ajax({
+	    url: "http://velojournal.com:3000/sightings.json",
+	    data: coords,
+	    success: function(data) {
+	      console.log(data)
+	      sightingMap.load_data(json)
+	    }
+	  })  
 }
 
 $(function() {
 	if (!navigator.geolocation.getCurrentPosition(load)) {
 		load({coords:{latitude:38.997934, longitude:-105.550567}});
 	}
+
 });
