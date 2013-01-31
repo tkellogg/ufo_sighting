@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  city: MyString
+  state: MyString
+  sighted_at: 2013-01-30 19:10:49
+  duration: 1
+  posted_at: 2013-01-30 19:10:49
+  shape: MyString
+  summary: MyText
+  match_score: 1
+  x_coord: 9.99
+  y_coord: 9.99
+
+two:
+  city: MyString
+  state: MyString
+  sighted_at: 2013-01-30 19:10:49
+  duration: 1
+  posted_at: 2013-01-30 19:10:49
+  shape: MyString
+  summary: MyText
+  match_score: 1
+  x_coord: 9.99
+  y_coord: 9.99
