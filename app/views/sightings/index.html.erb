@@ -1,0 +1,41 @@
+<h1>Listing sightings</h1>
+
+<table>
+  <tr>
+    <th>City</th>
+    <th>State</th>
+    <th>Sighted at</th>
+    <th>Duration</th>
+    <th>Posted at</th>
+    <th>Shape</th>
+    <th>Summary</th>
+    <th>Match score</th>
+    <th>X coord</th>
+    <th>Y coord</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sightings.each do |sighting| %>
+  <tr>
+    <td><%= sighting.city %></td>
+    <td><%= sighting.state %></td>
+    <td><%= sighting.sighted_at %></td>
+    <td><%= sighting.duration %></td>
+    <td><%= sighting.posted_at %></td>
+    <td><%= sighting.shape %></td>
+    <td><%= sighting.summary %></td>
+    <td><%= sighting.match_score %></td>
+    <td><%= sighting.x_coord %></td>
+    <td><%= sighting.y_coord %></td>
+    <td><%= link_to 'Show', sighting %></td>
+    <td><%= link_to 'Edit', edit_sighting_path(sighting) %></td>
+    <td><%= link_to 'Destroy', sighting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sighting', new_sighting_path %>
